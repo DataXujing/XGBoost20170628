@@ -190,7 +190,7 @@ $$f_m(x)=\rho_m g_m(x)$$
 $$F_m(x)=F_{m-1}(x)+\rho_mg_m(x)$$
 end for 
 
-$F_{\ast}\approx F_M(x)+\sum_{m=1}^M\rho_mg_m(x)$
+$F_{\ast}\approx F_M(x) = f_0(x)+\sum_{m=1}^M\rho_mg_m(x)$
 
 
 ---
@@ -198,9 +198,9 @@ $F_{\ast}\approx F_M(x)+\sum_{m=1}^M\rho_mg_m(x)$
 class: inverse,middle
 background-image: url(pic/star.jpg)
 
-需要估计 $F_0(x)$ , $g_m(x)$ , $\rho_m$ ,可以使用决策树逼近，使用LogLoss损失函数进行推导：
+需要估计 $F_0(x)=f_0(x)$ , $g_m(x)$ , $\rho_m$ ,可以使用决策树逼近，使用LogLoss损失函数进行推导：
 
-$$L(y,F)=log(1+exxp(-2yF))，y \in \{-1,1\}$$
+$$L(y,F)=log(1+exp(-2yF))，y \in \{-1,1\}$$
 
 ---
 
@@ -219,7 +219,7 @@ $$F_0(x)=\frac{1}{2}log\frac{1+\bar{y}}{1-\bar{y}}$$
 class: inverse,middle
 background-image: url(pic/star.jpg)
 
-第二步：估计 $g_m(x)$ (梯度)，并用决策树对其拟合
+第二步：估计 $g_m(x)$ (梯度)，实现时是第m颗树需要拟合的残差,并用决策树对其拟合
 
 $$g_m(x_i)=- \frac{\partial L(y_i,F)}{\partial F}|_{F=F_{m-1}}$$
 
